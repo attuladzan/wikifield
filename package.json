@@ -1,0 +1,35 @@
+{
+  "name": "wikifield",
+  "version": "1.0.0",
+  "description": "Визуальный редактор Markdown с поддержкой LaTeX и PlantUML",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/wikifield.git"
+  },
+  "keywords": ["markdown", "editor", "wysiwyg", "katex", "plantuml"],
+  "type": "module",
+  "main": "dist/wikifield.js",
+  "module": "dist/wikifield.js",
+  "exports": {
+    ".": {
+      "import": "./dist/wikifield.js",
+      "require": "./dist/wikifield.umd.cjs"
+    },
+    "./style.css": "./dist/wikifield.css"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "npm run build && npx serve dist -p 4173",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "katex": "^0.16.9"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

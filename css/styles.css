@@ -1,0 +1,896 @@
+/* KaTeX styles for math rendering */
+@import url('../node_modules/katex/dist/katex.min.css');
+
+/* ===== App ===== */
+.app {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ===== Editor Block (BEM) ===== */
+.editor {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.editor__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 6px 8px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.editor__toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: 8px;
+  margin-right: 4px;
+  border-right: 1px solid #dee2e6;
+}
+
+.editor__toolbar-group:last-child {
+  border-right: none;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.editor__toolbar-group[data-group="view"] {
+  margin-left: auto;
+}
+
+.editor__toolbar-group--disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.editor__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #495057;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.editor__button:hover {
+  background: #e9ecef;
+  color: #212529;
+}
+
+.editor__button:active {
+  background: #dee2e6;
+}
+
+.editor__button--active {
+  background: #e7f1ff;
+  color: #0d6efd;
+}
+
+.editor__button--active:hover {
+  background: #cce5ff;
+}
+
+.editor__button--heading {
+  font-weight: 600;
+}
+
+.editor__button--bold {
+  font-weight: 700;
+}
+
+.editor__button--italic {
+  font-style: italic;
+}
+
+.editor__button--strikethrough {
+  text-decoration: line-through;
+}
+
+.editor__select {
+  min-width: 100px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background: #fff;
+  color: #495057;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor__select:hover {
+  border-color: #adb5bd;
+}
+
+.editor__content {
+  min-height: 300px;
+  padding: 16px 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #212529;
+  outline: none;
+  overflow-y: auto;
+}
+
+.editor__content:focus {
+  outline: none;
+}
+
+.editor__body {
+  position: relative;
+}
+
+.editor__content-wrap {
+  min-height: 300px;
+}
+
+.editor__content-wrap--hidden {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+.editor__source {
+  display: none;
+  width: 100%;
+  min-height: 300px;
+  padding: 16px 20px;
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #212529;
+  background: #f8f9fa;
+  border: none;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.editor__source--visible {
+  display: block;
+}
+
+.editor__content h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+  font-weight: 600;
+}
+
+.editor__content h2 {
+  font-size: 1.5em;
+  margin: 0.75em 0;
+  font-weight: 600;
+}
+
+.editor__content h3 {
+  font-size: 1.17em;
+  margin: 0.83em 0;
+  font-weight: 600;
+}
+
+.editor__content p {
+  margin: 0 0 0.5em;
+}
+
+.editor__content p:last-child {
+  margin-bottom: 0;
+}
+
+.editor__content ul,
+.editor__content ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+.editor__content ul { list-style-type: disc; }
+
+.editor__content ol { list-style-type: decimal; }
+
+.editor__content li {
+  margin: 0.2em 0;
+}
+
+.editor__content a {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.editor__content a:hover {
+  color: #0a58ca;
+}
+
+.editor__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5em 0;
+}
+
+.editor__table th,
+.editor__table td {
+  border: 1px solid #dee2e6;
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.editor__table th {
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+.editor__table td:focus,
+.editor__table th:focus {
+  outline: 1px solid #0d6efd;
+  outline-offset: -1px;
+}
+
+/* ----- Table: insert dialog ----- */
+.editor__table-insert__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.editor__table-insert__content {
+  background: #fff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.editor__table-insert__content label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #495057;
+}
+
+.editor__table-insert__input {
+  width: 60px;
+  padding: 6px 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.editor__table-insert__btn {
+  padding: 8px 16px;
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor__table-insert__btn:hover {
+  background: #0b5ed7;
+}
+
+/* ----- Table: context menu ----- */
+.editor__table-menu {
+  position: fixed;
+  z-index: 1001;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 4px 0;
+  min-width: 200px;
+}
+
+.editor__table-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  color: #212529;
+  cursor: pointer;
+}
+
+.editor__table-menu button:hover {
+  background: #f8f9fa;
+}
+
+.editor__table-menu hr {
+  margin: 4px 0;
+  border: none;
+  border-top: 1px solid #dee2e6;
+}
+
+/* ----- Link: insert dialog ----- */
+.editor__link-insert__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.editor__link-insert__content {
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 360px;
+}
+
+.editor__link-insert__row {
+  margin-bottom: 12px;
+}
+
+.editor__link-insert__row:last-of-type {
+  margin-bottom: 16px;
+}
+
+.editor__link-insert__content label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #495057;
+}
+
+.editor__link-insert__input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.editor__link-insert__input:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+.editor__link-insert__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.editor__link-insert__btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor__link-insert__btn--primary {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.editor__link-insert__btn--primary:hover {
+  background: #0b5ed7;
+}
+
+.editor__link-insert__btn--cancel {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.editor__link-insert__btn--cancel:hover {
+  background: #dee2e6;
+}
+
+/* ----- Image ----- */
+.editor__content .editor__image {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.editor__content .editor__image:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+/* ----- Image: insert dialog ----- */
+.editor__image-insert__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.editor__image-insert__content {
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 400px;
+}
+
+.editor__image-insert__tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.editor__image-insert__tab {
+  padding: 8px 16px;
+  border: none;
+  background: #e9ecef;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #495057;
+}
+
+.editor__image-insert__tab:hover {
+  background: #dee2e6;
+}
+
+.editor__image-insert__tab--active {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.editor__image-insert__panel {
+  margin-bottom: 16px;
+}
+
+.editor__image-insert__panel--hidden {
+  display: none;
+}
+
+.editor__image-insert__row {
+  margin-bottom: 12px;
+}
+
+.editor__image-insert__row:last-of-type {
+  margin-bottom: 0;
+}
+
+.editor__image-insert__content label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #495057;
+}
+
+.editor__image-insert__input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.editor__image-insert__input:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+.editor__image-insert__file {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.editor__image-insert__hint {
+  font-size: 13px;
+  color: #6c757d;
+  margin: 0;
+}
+
+.editor__image-insert__upload {
+  padding: 12px 0;
+}
+
+.editor__image-insert__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.editor__image-insert__btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor__image-insert__btn--primary {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.editor__image-insert__btn--primary:hover {
+  background: #0b5ed7;
+}
+
+.editor__image-insert__btn--primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.editor__image-insert__btn--cancel {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.editor__image-insert__btn--cancel:hover {
+  background: #dee2e6;
+}
+
+/* ----- Formula (KaTeX) ----- */
+.editor__content .editor__math-inline {
+  display: inline;
+  vertical-align: middle;
+}
+
+.editor__content .editor__math-block {
+  display: block;
+  padding: 16px 0;
+  margin: 12px 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.editor__content .editor__math-block .katex {
+  font-size: 1.1em;
+}
+
+/* ----- Formula: insert dialog ----- */
+.editor__formula-insert__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.editor__formula-insert__content {
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 400px;
+}
+
+.editor__formula-insert__row {
+  margin-bottom: 12px;
+}
+
+.editor__formula-insert__textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.editor__formula-insert__textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+.editor__formula-insert__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #495057;
+  cursor: pointer;
+}
+
+.editor__formula-insert__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.editor__formula-insert__btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor__formula-insert__btn--primary {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.editor__formula-insert__btn--primary:hover {
+  background: #0b5ed7;
+}
+
+.editor__formula-insert__btn--cancel {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.editor__formula-insert__btn--cancel:hover {
+  background: #dee2e6;
+}
+
+/* ----- PlantUML ----- */
+.editor__content .editor__plantuml-block {
+  display: block;
+  margin: 12px 0;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #28a745;
+}
+
+.editor__content .editor__plantuml-block img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.editor__content .editor__plantuml-source {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow-x: auto;
+}
+
+.editor__content .editor__plantuml-source code {
+  background: none;
+  padding: 0;
+}
+
+.editor__plantuml-insert__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.editor__plantuml-insert__content {
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 480px;
+  max-width: 90vw;
+}
+
+.editor__plantuml-insert__row {
+  margin-bottom: 12px;
+}
+
+.editor__plantuml-insert__textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.editor__plantuml-insert__textarea:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+.editor__plantuml-insert__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.editor__plantuml-insert__btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor__plantuml-insert__btn--primary {
+  background: #28a745;
+  color: #fff;
+}
+
+.editor__plantuml-insert__btn--primary:hover {
+  background: #218838;
+}
+
+.editor__plantuml-insert__btn--cancel {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.editor__plantuml-insert__btn--cancel:hover {
+  background: #dee2e6;
+}
+
+/* ----- Code ----- */
+.editor__content .editor__code-inline {
+  padding: 2px 6px;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.9em;
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.editor__content .editor__code-block {
+  margin: 8px 0;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  background: #f8f9fa;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+.editor__content .editor__code-block__lang {
+  display: block;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #495057;
+  background: #e9ecef;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.editor__content .editor__code-block pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.editor__content .editor__code-block pre code {
+  background: none;
+  padding: 0;
+}
+
+.editor__content .editor__code-block:focus-within {
+  outline: 2px solid #0d6efd;
+  outline-offset: -1px;
+}
+
+/* ----- Code: insert dialog ----- */
+.editor__code-insert__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.editor__code-insert__content {
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 420px;
+  max-width: 90vw;
+}
+
+.editor__code-insert__row {
+  margin-bottom: 12px;
+}
+
+.editor__code-insert__textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.editor__code-insert__textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+.editor__code-insert__select {
+  min-width: 140px;
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.editor__code-insert__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #495057;
+  cursor: pointer;
+}
+
+.editor__code-insert__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.editor__code-insert__btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor__code-insert__btn--primary {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.editor__code-insert__btn--primary:hover {
+  background: #0b5ed7;
+}
+
+.editor__code-insert__btn--cancel {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.editor__code-insert__btn--cancel:hover {
+  background: #dee2e6;
+}
