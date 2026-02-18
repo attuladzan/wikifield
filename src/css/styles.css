@@ -1,5 +1,5 @@
-/* KaTeX styles for math rendering */
-@import url('../node_modules/katex/dist/katex.min.css');
+/* KaTeX styles + fonts — загружаются отдельно с CDN, не инлайнятся в бандл */
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css');
 
 /* ===== App ===== */
 .app {

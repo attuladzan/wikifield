@@ -42,7 +42,7 @@ $$E = mc^2$$
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'js/build-entry.js'),
+      entry: resolve(__dirname, 'src/js/build-entry.js'),
       name: 'Wikifield',
       fileName: (format) => (format === 'es' ? 'wikifield.js' : 'wikifield.umd.cjs'),
       formats: ['es', 'umd'],
@@ -55,7 +55,9 @@ $$E = mc^2$$
     },
     outDir: 'dist',
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
+    minify: false,
+    cssMinify: false,
     cssCodeSplit: false,
   },
 });

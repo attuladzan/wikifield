@@ -3,22 +3,48 @@
   "version": "1.0.1",
   "description": "Визуальный редактор Markdown с поддержкой LaTeX и PlantUML",
   "license": "MIT",
+  "author": "attuladzan",
   "repository": {
     "type": "git",
     "url": "https://github.com/attuladzan/wikifield.git"
   },
-  "keywords": ["markdown", "editor", "wysiwyg", "katex", "plantuml"],
+  "homepage": "https://github.com/attuladzan/wikifield#readme",
+  "bugs": {
+    "url": "https://github.com/attuladzan/wikifield/issues"
+  },
+  "keywords": [
+    "markdown",
+    "editor",
+    "wysiwyg",
+    "katex",
+    "plantuml",
+    "latex"
+  ],
   "type": "module",
   "main": "dist/wikifield.js",
   "module": "dist/wikifield.js",
+  "unpkg": "dist/wikifield.umd.cjs",
+  "jsdelivr": "dist/wikifield.umd.cjs",
   "exports": {
     ".": {
       "import": "./dist/wikifield.js",
-      "require": "./dist/wikifield.umd.cjs"
+      "require": "./dist/wikifield.umd.cjs",
+      "default": "./dist/wikifield.js"
     },
     "./style.css": "./dist/wikifield.css"
   },
-  "files": ["dist"],
+  "files": [
+    "dist/wikifield.js",
+    "dist/wikifield.css",
+    "dist/wikifield.umd.cjs"
+  ],
+  "sideEffects": [
+    "dist/wikifield.css",
+    "**/*.css"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "vite build",
     "dev": "vite",

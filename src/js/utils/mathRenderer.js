@@ -1,7 +1,7 @@
 /**
  * Рендеринг LaTeX-формул в визуальное представление через KaTeX.
  */
-import katex from '../../node_modules/katex/dist/katex.mjs';
+import katex from 'katex';
 
 /**
  * Рендерит LaTeX в HTML-строку.

@@ -1,5 +1,8 @@
 # Wikifield
 
+[![npm version](https://img.shields.io/npm/v/wikifield.svg)](https://www.npmjs.com/package/wikifield)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Визуальный редактор Markdown с поддержкой LaTeX (KaTeX), PlantUML, подсветкой кода и расширяемой системой плагинов.
 
 ## Возможности
@@ -16,24 +19,15 @@
 npm install wikifield
 ```
 
-Или из репозитория GitHub:
+Или из репозитория:
 
 ```bash
-npm install github:owner/wikifield
+npm install github:attuladzan/wikifield
 ```
 
 ## Быстрый старт
 
-```html
-<link rel="stylesheet" href="node_modules/wikifield/dist/wikifield.css">
-<div id="editor"></div>
-<script type="module">
-  import { createEditor } from 'wikifield';
-  createEditor('#editor');
-</script>
-```
-
-С бандлером (Webpack, Vite и т.п.):
+### С бандлером (Vite, Webpack и т.п.)
 
 ```javascript
 import { createEditor } from 'wikifield';
@@ -42,24 +36,35 @@ import 'wikifield/style.css';
 createEditor('#editor');
 ```
 
-## Подключение без сборщика
-
-Скачайте `wikifield.js` и `wikifield.css` из [релизов](https://github.com/owner/wikifield/releases), разместите в проекте:
+### Без сборщика (ES-модули)
 
 ```html
-<link rel="stylesheet" href="path/to/wikifield.css">
 <div id="editor"></div>
+<link rel="stylesheet" href="node_modules/wikifield/dist/wikifield.css">
 <script type="module">
-  import { createEditor } from './path/to/wikifield.js';
+  import { createEditor } from 'wikifield';
   createEditor('#editor');
 </script>
 ```
 
-Или через UMD:
+### CDN (unpkg / jsdelivr)
 
 ```html
-<link rel="stylesheet" href="path/to/wikifield.css">
 <div id="editor"></div>
+<link rel="stylesheet" href="https://unpkg.com/wikifield@latest/dist/wikifield.css">
+<script type="module">
+  import { createEditor } from 'https://unpkg.com/wikifield@latest/dist/wikifield.js';
+  createEditor('#editor');
+</script>
+```
+
+> Для продакшена замените `@latest` на конкретную версию, например `@1.0.1`.
+
+### UMD (без ES-модулей)
+
+```html
+<div id="editor"></div>
+<link rel="stylesheet" href="path/to/wikifield.css">
 <script src="path/to/wikifield.umd.cjs" defer></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -100,6 +105,8 @@ const markdown = editor.getMarkdown();
 ### Плагин тулбара
 
 ```javascript
+import { createEditor, defaultPlugins } from 'wikifield';
+
 const myPlugin = {
   id: 'mybutton',
   group: 'format',
@@ -116,7 +123,7 @@ createEditor('#editor', { plugins: [myPlugin, ...defaultPlugins] });
 ### Обработчик Markdown
 
 ```javascript
-import { defaultHandlers } from 'wikifield';
+import { createEditor, defaultHandlers } from 'wikifield';
 
 defaultHandlers.register({
   name: 'myblock',
@@ -132,7 +139,15 @@ defaultHandlers.register({
     return undefined;
   },
 });
+
+createEditor('#editor');
 ```
+
+## Ссылки
+
+- [npm](https://www.npmjs.com/package/wikifield)
+- [GitHub](https://github.com/attuladzan/wikifield)
+- [Issues](https://github.com/attuladzan/wikifield/issues)
 
 ## Лицензия
 

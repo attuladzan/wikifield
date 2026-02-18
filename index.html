@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Визуальный редактор</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="src/css/styles.css">
 </head>
 <body>
   <div id="app" class="app"></div>
 
-  <script type="module" src="js/entry.js"></script>
+  <script type="module" src="src/js/entry.js"></script>
   <script type="module">
-    import { createEditor } from './js/entry.js';
+    import { createEditor } from './src/js/entry.js';
     const editor = createEditor('#app');
     editor.setMarkdown(`# Заголовок
 Привет, **мир**! Это *редактор* с ~~поддержкой~~ Markdown.
